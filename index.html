@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Metropolitian Library</h1>
+
+    <form action="" method="post">
+      <h3>Donate a book in the library</h3>
+
+      <div id="title-field">
+        <label for="title">Title of the book</label>
+        <input type="text" name="title" id="title" required />
+      </div>
+
+      <div id="author-field">
+        <label for="author">Author name</label>
+        <input type="text" name="author" required id="author" />
+      </div>
+
+      <div id="pages-field">
+        <label for="pages">No.of Pages</label>
+        <input type="number" name="pages" min="0" id="pages" required />
+      </div>
+
+      <div id="read-field">
+        <div><p for="read">Did You read it ?</p></div>
+        <div>
+          <input type="radio" name="read" id="not-yet" />
+          <label for="not-yet">Not yet</label><br />
+          <input type="radio" name="read" id="complete" checked />
+          <label for="complete">Completed</label><br />
+          <input type="radio" name="read" id="reading" />
+          <label for="reading">Reading</label><br />
+        </div>
+      </div>
+
+      <div id="note-field">
+        <label for="note">Note</label>
+        <textarea
+          placeholder="add any interesting detail here"
+          rows="5"
+          cols="20"
+          id="note"
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" id="btn">Submit</button>
+    </form>
+
+    <div id="books">
+      <h3>Books present in our library:</h3>
+      <table border="2" id="table">
+        <tr>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Pages</th>
+          <th>Read?</th>
+          <th>Note</th>
+          <th>Delete/Edit</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>The tales of John doe</td>
+          <td>Janice doe</td>
+          <td>500</td>
+          <td>not yet</td>
+          <td>This is a demo</td>
+          <td><button>Delete</button><button>Edit</button></td>
+        </tr>
+      </table>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
