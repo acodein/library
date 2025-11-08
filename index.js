@@ -12,8 +12,9 @@ function Book(id,title,author,pages,read,note){
 }
 
 const button = document.getElementById("btn");
- const delBtn = document.createElement("button");
-const readBtn = document.createElement("button");
+
+
+
 
 
 button.addEventListener("click",(event,titles,authors,pages,reads,notes)=>{
@@ -30,7 +31,7 @@ button.addEventListener("click",(event,titles,authors,pages,reads,notes)=>{
     for(let i of reads){
         if(i.checked){
             selectedValue = i.id;
-             console.log(selectedValue);
+            //  console.log(selectedValue);
             break;
         }
     }
@@ -53,51 +54,66 @@ button.addEventListener("click",(event,titles,authors,pages,reads,notes)=>{
     const table = document.getElementById("table");
     const row = document.createElement("tr");
     const valuesArr = Object.values(book1);
+    console.log(valuesArr);
 
     //Object.values(i.length-1));
-    console.log(valuesArr)
+    // console.log(valuesArr)
 
+    const dataWithIds = Object.keys(book1);
+    console.log(dataWithIds)
 
-for(let i=0; i<= valuesArr.length;i++){
-    valuesArr[6]=delBtn;
-    console.log(i);
+for(let i=0; i<=valuesArr.length;i++){
+    const readBtn = document.createElement("button");
+     readBtn.innerText="change";
+     const delBtn = document.createElement("button");
+      delBtn.textContent = "Delete";
+     
     const data = document.createElement("td");
     table.appendChild(row);
     row.appendChild(data);
     data.innerText = valuesArr[i];
-
-    if(i === 6){
-        data.appendChild(delBtn);
-        delBtn.textContent = "Delete";
+    
+    if(data.innerText == "reading" || data.innerText 
+    == "complete" || data.innerText == "not yet"){
+       
+        readBtn.textContent = data.textContent;
+         data.textContent="";
+        data.appendChild(readBtn);
+        
     }
-}
+       if(i===valuesArr.length){
+         data.textContent = ""
+            data.appendChild(delBtn);
+           
+     }
 
-    // delBtn.id = `${id}`;
-    // return myLibrary;
- 
-}
-} )
-
-delBtn.addEventListener("click",(event)=>{
+ delBtn.addEventListener("click",(event)=>{
     
    if(event.target.nodeName === "BUTTON" && event .target.textContent === "Delete"){
-
     let row = event.target.closest("tr");
     console.log(row);
-    if(row){
-        row.remove();
-    }
-   }   
-}
-)
-
-readBtn.addEventListener("click",()=>{
-    let data = document.getElementsByTagName("td");
-
-    for(let i=7; i<data.length;i++){
-      if(data[i].textContent === "not-yet"){
-        data[i].innerText = "reading";
-      }
-    }  
+        
+        if(row){
+         row.remove();
+        }
+    }   
     });
+
+    readBtn.addEventListener("click",(event)=>{
+        const change = event.target.closest("button");
+        // console.log(change.textContent)
+         if(change.textContent == "complete"){
+            change.textContent = "not yet";
+         } else if(change.textContent == "not yet"){
+            change.textContent = "reading"
+         }else if(change.textContent =="reading"){
+            change.textContent = "complete";
+         }
+    })
+}
+}
+})
+
+
+
     
