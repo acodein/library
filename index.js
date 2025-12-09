@@ -2,7 +2,9 @@
 
 const myLibrary = [];
 
-function Book(id,title,author,pages,read,note){
+class Book {
+
+constructor(id,title,author,pages,read,note){
     this.id = id;
     this.title = title;
     this.author = author;
@@ -10,23 +12,19 @@ function Book(id,title,author,pages,read,note){
     this.read = read;
     this.note = note;
 }
-
+}
 const button = document.getElementById("btn");
-
-
-
-
 
 button.addEventListener("click",(event,titles,authors,pages,reads,notes)=>{
     event.preventDefault();
     const id = crypto.randomUUID();
     let book1 = id;
      titles = document.getElementById("title");
-    authors = document.getElementById("author");
-    pages  =document.getElementById("pages");
-    console.log(pages.value)
-    reads = document.getElementsByName("read");
-    console.log(reads);
+     authors = document.getElementById("author");
+     pages  =document.getElementById("pages");
+     console.log(pages.value)
+     reads = document.getElementsByName("read");
+     console.log(reads);
     let selectedValue 
     for(let i of reads){
         if(i.checked){
@@ -83,8 +81,7 @@ for(let i=0; i<=valuesArr.length;i++){
     }
        if(i===valuesArr.length){
          data.textContent = ""
-            data.appendChild(delBtn);
-           
+            data.appendChild(delBtn); 
      }
 
  delBtn.addEventListener("click",(event)=>{
